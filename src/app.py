@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import ipaddress
+import re
 import sqlite3
 import subprocess
 from pathlib import Path
@@ -68,7 +69,11 @@ def create_app(test_config: dict | None = None) -> Flask:
     def read_report():
         filename = request.args.get("file", "match-summary.txt")
         safe_filename = Path(filename).name
-        if safe_filename != filename or safe_filename in {"", ".", ".."}:
+        if (
+            safe_filename != filename
+            or safe_filename in {"", ".", ".."}
+            or not re.fullmatch(r"[A-Za-z0-9._-]{1,120}", safe_filename)
+        ):
             return jsonify(error="invalid report path"), 400
 
         base_dir = Path(app.config["REPORT_DIR"]).resolve()

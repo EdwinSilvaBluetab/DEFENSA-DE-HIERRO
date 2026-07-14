@@ -1,0 +1,23 @@
+DEFENSA DE HIERRO - INICIO RÁPIDO
+=================================
+
+1. Descomprime la carpeta conservando el subdirectorio oculto .git.
+2. Crea en GitHub un repositorio PÚBLICO y VACÍO.
+3. En PowerShell, dentro de esta carpeta:
+
+   git remote add origin https://github.com/TU_USUARIO/defensa-de-hierro-reto2.git
+   git checkout main
+   git push -u origin main
+
+4. Espera CodeQL y toma capturas de las alertas.
+5. Sube la corrección:
+
+   git checkout fix/security-hardening
+   git push -u origin fix/security-hardening
+
+6. Abre un PR hacia main y toma capturas de Files changed y Checks.
+7. Sigue docs/Guia_Evidencias_y_Entrega.md.
+
+Si el ZIP pierde el historial Git, usa el archivo .bundle entregado aparte:
+
+   git clone defensa_de_hierro_reto2.bundle defensa-de-hierro

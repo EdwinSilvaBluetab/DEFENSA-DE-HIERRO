@@ -106,7 +106,6 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
         return jsonify(
             target=validated_ip,
             output=output,
-            return_code=result.returncode,
         )
 
     @app.get("/reports/read")
